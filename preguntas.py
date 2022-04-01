@@ -12,7 +12,9 @@ import pandas as pd
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
-
+# print(tbl0)
+# print(tbl1)
+# print(tbl2)
 
 def pregunta_01():
     """
@@ -22,8 +24,8 @@ def pregunta_01():
     40
 
     """
-    return
-
+    return tbl0.shape[0]
+print(pregunta_01())
 
 def pregunta_02():
     """
@@ -33,8 +35,8 @@ def pregunta_02():
     4
 
     """
-    return
-
+    return tbl0.shape[1]
+print(pregunta_02())
 
 def pregunta_03():
     """
