@@ -12,7 +12,7 @@ import pandas as pd
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
-# print(tbl0)
+print(tbl0)
 # print(tbl1)
 # print(tbl2)
 
@@ -25,7 +25,7 @@ def pregunta_01():
 
     """
     return tbl0.shape[0]
-print(pregunta_01())
+#print(pregunta_01())
 
 def pregunta_02():
     """
@@ -36,7 +36,7 @@ def pregunta_02():
 
     """
     return tbl0.shape[1]
-print(pregunta_02())
+#print(pregunta_02())
 
 def pregunta_03():
     """
@@ -52,8 +52,12 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
 
+    v1=tbl0["_c1"].value_counts()
+
+
+    return v1.sort_index(ascending=True)
+#print(pregunta_03())
 
 def pregunta_04():
     """
