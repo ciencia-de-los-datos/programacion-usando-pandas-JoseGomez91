@@ -96,9 +96,15 @@ def pregunta_05():
     Name: _c2, dtype: int64
     """
     return v1
-print(pregunta_05())
+#print(pregunta_05())
 
 def pregunta_06():
+    v1 = tbl1[[ "_c4"]]
+    v1 = v1["_c4"].value_counts()
+    v1=v1.sort_index(ascending=True)
+    v1=v1.index.values.tolist()
+    v1=[x.upper() for x in v1]
+    #print(v1)
     """
     Retorne una lista con los valores unicos de la columna _c4 de del archivo `tbl1.csv`
     en mayusculas y ordenados alfabéticamente.
@@ -107,7 +113,8 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    return v1
+print(pregunta_06())
 
 
 def pregunta_07():
