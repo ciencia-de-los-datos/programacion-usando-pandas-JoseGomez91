@@ -60,6 +60,10 @@ def pregunta_03():
 #print(pregunta_03())
 
 def pregunta_04():
+    v1 = tbl0[["_c1", "_c2"]]
+    v1=v1.groupby("_c1")["_c2"].mean()
+    print(v1)
+
     """
     Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
 
@@ -72,7 +76,7 @@ def pregunta_04():
     Name: _c2, dtype: float64
     """
     return
-
+print(pregunta_04())
 
 def pregunta_05():
     """
