@@ -133,9 +133,12 @@ def pregunta_07():
     Name: _c2, dtype: int64
     """
     return v1
-print(pregunta_07())
+#print(pregunta_07())
 
 def pregunta_08():
+    v1 = tbl0
+    v1["suma"]=v1["_c0"] + v1["_c2"]
+
     """
     Agregue una columna llamada `suma` con la suma de _c0 y _c2 al archivo `tbl0.tsv`.
 
@@ -150,8 +153,8 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
-
+    return v1
+#print(pregunta_08())
 
 def pregunta_09():
     """
