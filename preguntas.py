@@ -174,7 +174,7 @@ def pregunta_09():
 
     """
     return v1
-print(pregunta_09())
+#print(pregunta_09())
 
 def pregunta_10():
     """
