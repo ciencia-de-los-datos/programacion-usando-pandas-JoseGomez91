@@ -12,8 +12,8 @@ import pandas as pd
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
-#print(tbl0)
-print(tbl1)
+print(tbl0)
+#print(tbl1)
 # print(tbl2)
 
 def pregunta_01():
@@ -114,10 +114,12 @@ def pregunta_06():
 
     """
     return v1
-print(pregunta_06())
+#print(pregunta_06())
 
 
 def pregunta_07():
+    v1 = tbl0[["_c1", "_c2"]]
+    v1 = v1.groupby("_c1")["_c2"].sum()
     """
     Calcule la suma de la _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
 
@@ -130,8 +132,8 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
-
+    return v1
+print(pregunta_07())
 
 def pregunta_08():
     """
