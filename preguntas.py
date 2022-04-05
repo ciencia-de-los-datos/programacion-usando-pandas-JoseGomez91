@@ -158,7 +158,7 @@ def pregunta_08():
 
 def pregunta_09():
     v1 = tbl0
-    v1["year"] = v1["_c3"][0][0:4]
+    v1["year"] = v1["_c3"].map(lambda x: x[0:4])
     """
     Agregue el año como una columna al archivo `tbl0.tsv`.
 
@@ -174,7 +174,7 @@ def pregunta_09():
 
     """
     return v1
-#print(pregunta_09())
+print(pregunta_09())
 
 def pregunta_10():
     """
