@@ -157,6 +157,8 @@ def pregunta_08():
 #print(pregunta_08())
 
 def pregunta_09():
+    v1 = tbl0
+    v1["year"] = v1["_c3"][0][0:4]
     """
     Agregue el año como una columna al archivo `tbl0.tsv`.
 
@@ -171,8 +173,8 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
-
+    return v1
+#print(pregunta_09())
 
 def pregunta_10():
     """
