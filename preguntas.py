@@ -12,8 +12,8 @@ import pandas as pd
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
-print(tbl0)
-# print(tbl1)
+#print(tbl0)
+print(tbl1)
 # print(tbl2)
 
 def pregunta_01():
@@ -62,7 +62,7 @@ def pregunta_03():
 def pregunta_04():
     v1 = tbl0[["_c1", "_c2"]]
     v1=v1.groupby("_c1")["_c2"].mean()
-    print(v1)
+    #print(v1)
 
     """
     Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
@@ -76,9 +76,12 @@ def pregunta_04():
     Name: _c2, dtype: float64
     """
     return v1
-print(pregunta_04())
+#print(pregunta_04())
 
 def pregunta_05():
+    v1 = tbl0[["_c1", "_c2"]]
+    v1 = v1.groupby("_c1")["_c2"].max()
+    #print(v1)
     """
     Calcule el valor máximo de _c2 por cada letra en la columna _c1 del archivo
     `tbl0.tsv`.
@@ -92,8 +95,8 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
-
+    return v1
+print(pregunta_05())
 
 def pregunta_06():
     """
