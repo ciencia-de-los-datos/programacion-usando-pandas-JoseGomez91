@@ -215,9 +215,12 @@ def pregunta_11():
     39   39    a,d,f
     """
     return v1
-print(pregunta_11())
+#print(pregunta_11())
 
 def pregunta_12():
+    v1=tbl2
+    v1["_c5"]=tbl2['_c5a']+":"+tbl2['_c5b'].astype(str)
+    v1 = tbl2.groupby('_c0').agg({'_c5': lambda x: ','.join(sorted(list(x.astype(str))))})
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
     la columna _c5a y _c5b (unidos por ':') de la tabla `tbl2.tsv`.
@@ -232,8 +235,8 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
-
+    return v1
+print(pregunta_12())
 
 def pregunta_13():
     """
