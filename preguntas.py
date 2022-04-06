@@ -194,8 +194,8 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return v1
-#print(pregunta_10())
+    return v1.reset_index()
+print(pregunta_10())
 
 def pregunta_11():
     v1 = tbl1.groupby('_c0').agg({'_c4': lambda x: ','.join(sorted(list(x.astype(str))))})
@@ -221,6 +221,7 @@ def pregunta_12():
     v1=tbl2
     v1["_c5"]=tbl2['_c5a']+":"+tbl2['_c5b'].astype(str)
     v1 = tbl2.groupby('_c0').agg({'_c5': lambda x: ','.join(sorted(list(x.astype(str))))})
+    v1=v1.reset_index()
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
     la columna _c5a y _c5b (unidos por ':') de la tabla `tbl2.tsv`.
