@@ -12,7 +12,9 @@ import pandas as pd
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
-
+#print(tbl0)
+#print(tbl1)
+#print(tbl2)
 
 def pregunta_01():
     """
@@ -22,8 +24,8 @@ def pregunta_01():
     40
 
     """
-    return
-
+    return tbl0.shape[0]
+#print(pregunta_01())
 
 def pregunta_02():
     """
@@ -33,8 +35,8 @@ def pregunta_02():
     4
 
     """
-    return
-
+    return tbl0.shape[1]
+#print(pregunta_02())
 
 def pregunta_03():
     """
@@ -50,10 +52,18 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
 
+    v1=tbl0["_c1"].value_counts()
+
+
+    return v1.sort_index(ascending=True)
+#print(pregunta_03())
 
 def pregunta_04():
+    v1 = tbl0[["_c1", "_c2"]]
+    v1=v1.groupby("_c1")["_c2"].mean()
+    #print(v1)
+
     """
     Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
 
@@ -65,10 +75,13 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
-
+    return v1
+#print(pregunta_04())
 
 def pregunta_05():
+    v1 = tbl0[["_c1", "_c2"]]
+    v1 = v1.groupby("_c1")["_c2"].max()
+    #print(v1)
     """
     Calcule el valor máximo de _c2 por cada letra en la columna _c1 del archivo
     `tbl0.tsv`.
@@ -82,10 +95,16 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
-
+    return v1
+#print(pregunta_05())
 
 def pregunta_06():
+    v1 = tbl1[[ "_c4"]]
+    v1 = v1["_c4"].value_counts()
+    v1=v1.sort_index(ascending=True)
+    v1=v1.index.values.tolist()
+    v1=[x.upper() for x in v1]
+    #print(v1)
     """
     Retorne una lista con los valores unicos de la columna _c4 de del archivo `tbl1.csv`
     en mayusculas y ordenados alfabéticamente.
@@ -94,10 +113,13 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    return v1
+#print(pregunta_06())
 
 
 def pregunta_07():
+    v1 = tbl0[["_c1", "_c2"]]
+    v1 = v1.groupby("_c1")["_c2"].sum()
     """
     Calcule la suma de la _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
 
@@ -110,10 +132,13 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
-
+    return v1
+#print(pregunta_07())
 
 def pregunta_08():
+    v1 = tbl0
+    v1["suma"]=v1["_c0"] + v1["_c2"]
+
     """
     Agregue una columna llamada `suma` con la suma de _c0 y _c2 al archivo `tbl0.tsv`.
 
@@ -128,10 +153,12 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
-
+    return v1
+#print(pregunta_08())
 
 def pregunta_09():
+    v1 = tbl0
+    v1["year"] = v1["_c3"].map(lambda x: x[0:4])
     """
     Agregue el año como una columna al archivo `tbl0.tsv`.
 
@@ -146,10 +173,14 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
-
+    return v1
+#print(pregunta_09())
 
 def pregunta_10():
+    v1 = tbl0.groupby('_c1').agg({'_c2':lambda x: ':'.join(sorted(list(x.astype(str))))}).astype(str)
+    #v1=v1.reset_index()
+
+
     """
     Construya una tabla que contenga _c1 y una lista separada por ':' de los valores de
     la columna _c2 para el archivo `tbl0.tsv`.
@@ -163,10 +194,12 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
-
+    return v1
+#print(pregunta_10())
 
 def pregunta_11():
+    v1 = tbl1.groupby('_c0').agg({'_c4': lambda x: ','.join(sorted(list(x.astype(str))))})
+    v1 = v1.reset_index()
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
     la columna _c4 del archivo `tbl1.tsv`.
@@ -182,10 +215,14 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
-
+    return v1
+#print(pregunta_11())
 
 def pregunta_12():
+    v1=tbl2
+    v1["_c5"]=tbl2['_c5a']+":"+tbl2['_c5b'].astype(str)
+    v1 = tbl2.groupby('_c0').agg({'_c5': lambda x: ','.join(sorted(list(x.astype(str))))})
+    v1=v1.reset_index()
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
     la columna _c5a y _c5b (unidos por ':') de la tabla `tbl2.tsv`.
@@ -200,10 +237,25 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
-
+    return v1
+#print(pregunta_12())
 
 def pregunta_13():
+
+    v1=tbl0
+    v1["_c5b"] = tbl2.groupby("_c0")["_c5b"].sum()
+    v1 = v1.groupby("_c1")["_c5b"].sum()
+    #v1["_c1"]=tbl0["_c1"]
+    # v1["uno"] = tbl0["_c0"]
+    # v1["dos"] = tbl2["_c5b"]
+    # v1["tres"]=v1["uno"]+v1["dos"]
+    # v1["cuatro"]=tbl2["_c0"]
+    # v1 = tbl0[["_c1", "cuatro"]]
+    # print(v1)
+    # v1 = v1.groupby("_c1")["cuatro"].sum()
+
+    # v1["_c5"] = tbl2['_c5a'] + ":" + tbl2['_c5b'].astype(str)
+    # v1 = tbl2.groupby('_c0').agg({'_c5': lambda x: ','.join(sorted(list(x.astype(str))))})
     """
     Si la columna _c0 es la clave en los archivos `tbl0.tsv` y `tbl2.tsv`, compute la
     suma de tbl2._c5b por cada valor en tbl0._c1.
@@ -217,4 +269,7 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    return v1
+#print(pregunta_13())
+
+
