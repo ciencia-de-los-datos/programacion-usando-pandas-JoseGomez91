@@ -12,9 +12,9 @@ import pandas as pd
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
-print(tbl0)
+#print(tbl0)
 #print(tbl1)
-print(tbl2)
+#print(tbl2)
 
 def pregunta_01():
     """
@@ -195,7 +195,7 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     return v1
-print(pregunta_10())
+#print(pregunta_10())
 
 def pregunta_11():
     v1 = tbl1.groupby('_c0').agg({'_c4': lambda x: ','.join(sorted(list(x.astype(str))))})
@@ -241,12 +241,18 @@ def pregunta_12():
 #print(pregunta_12())
 
 def pregunta_13():
+
     v1=tbl0
-    v1["uno"] = tbl0["_c0"]
-    v1["dos"] = tbl2["_c5b"]
-    v1["tres"]=v1["uno"]+v1["dos"]
-    v1 = tbl0[["_c1", "tres"]]
-    v1 = v1.groupby("_c1")["tres"].sum()
+    v1["_c5b"] = tbl2.groupby("_c0")["_c5b"].sum()
+    v1 = v1.groupby("_c1")["_c5b"].sum()
+    #v1["_c1"]=tbl0["_c1"]
+    # v1["uno"] = tbl0["_c0"]
+    # v1["dos"] = tbl2["_c5b"]
+    # v1["tres"]=v1["uno"]+v1["dos"]
+    # v1["cuatro"]=tbl2["_c0"]
+    # v1 = tbl0[["_c1", "cuatro"]]
+    # print(v1)
+    # v1 = v1.groupby("_c1")["cuatro"].sum()
 
     # v1["_c5"] = tbl2['_c5a'] + ":" + tbl2['_c5b'].astype(str)
     # v1 = tbl2.groupby('_c0').agg({'_c5': lambda x: ','.join(sorted(list(x.astype(str))))})
