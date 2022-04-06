@@ -13,7 +13,7 @@ tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
 tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
 tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
 print(tbl0)
-print(tbl1)
+#print(tbl1)
 print(tbl2)
 
 def pregunta_01():
@@ -177,8 +177,8 @@ def pregunta_09():
 #print(pregunta_09())
 
 def pregunta_10():
-    v1 = tbl0.groupby('_c1').agg({'_c2':lambda x: ':'.join(sorted(list(x.astype(str))))})
-    v1=v1.reset_index()
+    v1 = tbl0.groupby('_c1').agg({'_c2':lambda x: ':'.join(sorted(list(x.astype(str))))}).astype(str)
+    #v1=v1.reset_index()
 
 
     """
@@ -216,7 +216,7 @@ def pregunta_11():
     39   39    a,d,f
     """
     return v1
-print(pregunta_11())
+#print(pregunta_11())
 
 def pregunta_12():
     v1=tbl2
@@ -238,9 +238,18 @@ def pregunta_12():
     39   39                    ggg:3,hhh:8,jjj:5
     """
     return v1
-print(pregunta_12())
+#print(pregunta_12())
 
 def pregunta_13():
+    v1=tbl0
+    v1["uno"] = tbl0["_c0"]
+    v1["dos"] = tbl2["_c5b"]
+    v1["tres"]=v1["uno"]+v1["dos"]
+    v1 = tbl0[["_c1", "tres"]]
+    v1 = v1.groupby("_c1")["tres"].sum()
+
+    # v1["_c5"] = tbl2['_c5a'] + ":" + tbl2['_c5b'].astype(str)
+    # v1 = tbl2.groupby('_c0').agg({'_c5': lambda x: ','.join(sorted(list(x.astype(str))))})
     """
     Si la columna _c0 es la clave en los archivos `tbl0.tsv` y `tbl2.tsv`, compute la
     suma de tbl2._c5b por cada valor en tbl0._c1.
@@ -254,4 +263,7 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    return v1
+#print(pregunta_13())
+
+
